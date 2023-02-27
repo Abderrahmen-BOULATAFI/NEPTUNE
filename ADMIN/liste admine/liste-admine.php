@@ -9,10 +9,6 @@ if (Auth::isLogged()) {
 
 ?>
 
-<?php
-require('./function.php');
-$Liste = afficher();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -181,7 +177,7 @@ $Liste = afficher();
 
                     <td class="action-buttons">
                         <a class="edit" href="#">Modifier</a>
-                        <button name="delete" class="delete">Supprimer</button>
+                        <button name="delete" class="delete" onclick="supprimer(<?= $liste->id ?>)">Supprimer</button>
                     </td>
                 </tr>
             <?php } ?>

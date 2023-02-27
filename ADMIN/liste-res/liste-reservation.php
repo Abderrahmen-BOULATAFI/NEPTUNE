@@ -12,6 +12,19 @@ if (Auth::isLogged()) {
 require('./function.php');
 $Liste = afficher();
 ?>
+
+<?php
+if (isset($_POST['delete'])) {
+    $id = $_POST['id'];
+    supprimer($id);
+    // rediriger l'utilisateur vers la page de liste des membres admine
+    header("Location: liste-reservation.php");
+    exit;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -164,7 +177,7 @@ $Liste = afficher();
                     <td><?= $liste->nom ?></td>
                     <td class="action-buttons">
                         <a class="edit" href="#">Modifier</a>
-                        <a class="delete" href="#">Supprimer</a>
+                        <button name="delete" class="delete" onclick="supprimer(<?= $liste->id ?>)">Supprimer</button>
                     </td>
                 </tr>
             <?php } ?>

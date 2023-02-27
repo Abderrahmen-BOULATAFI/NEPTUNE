@@ -9,3 +9,13 @@ function afficher()
         return $data;
     }
 }
+
+function supprimer($id)
+{
+    if (require("./db-conn.php")) {
+        $reque = $access->prepare("DELETE FROM listersv WHERE id = :id");
+        $reque->bindParam(':id', $id);
+        $reque->execute();
+        $reque->closeCursor();
+    }
+}
